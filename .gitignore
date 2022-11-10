@@ -1,0 +1,6 @@
+**/*.tfstate
+**/.idea
+**/.terraform
+.terraform
+.terraform*
+terraform*

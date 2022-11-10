@@ -1,0 +1,36 @@
+[{
+  "essential": true,
+  "image": "${CONTAINER_IMAGE}",
+  "memory": 8192,
+  "cpu": 4096,
+  "memoryReservation": 64,
+  "name": "${CONTAINER_NAME}",
+  "logConfiguration": {
+    "logDriver": "awslogs",
+    "options": {
+      "awslogs-group": "${LOG_GROUP_ID}",
+      "awslogs-region": "${AWS_REGION}",
+      "awslogs-stream-prefix": "${APP_NAME}-sonarqube"
+    }
+  },
+  "portMappings": [
+    {
+      "hostPort": ${CONTAINER_PORT},
+      "containerPort": ${CONTAINER_PORT}
+    }
+  ],
+  "environment": [
+    {
+      "name": "SONARQUBE_JDBC_USERNAME",
+      "value": "sonarqube"
+    },
+    {
+      "name": "SONARQUBE_JDBC_PASSWORD",
+      "value": "sonarqube"
+    },
+    {
+      "name": "SONARQUBE_JDBC_URL",
+      "value": "jdbc:postgresql://${ENDPOINT}/sonar"
+    }
+  ]
+}]
